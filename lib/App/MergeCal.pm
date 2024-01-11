@@ -11,8 +11,12 @@ class App::MergeCal {
   field $vfile_parser :param = Text::vFile::asData->new;
   field $json_parser :param = JSON->new;
   field $title :param;
-  field $output :param;
+  field $output :param = '';
   field $calendars :param;
+
+  method calendars { return $calendars }
+  method title     { return $title }
+  method output    { return $title }
 
   method run {
     my $combined = {
