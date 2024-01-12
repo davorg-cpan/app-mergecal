@@ -3,7 +3,9 @@ use Feature::Compat::Class;
 
 class App::MergeCal {
 
-  use Encode;
+  our $VERSION = '0.0.1';
+
+  use Encode 'encode_utf8';
   use Text::vFile::asData;
   use LWP::Simple;
   use JSON;
