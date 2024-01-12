@@ -11,7 +11,6 @@ class App::MergeCal {
   use JSON;
 
   field $vfile_parser :param = Text::vFile::asData->new;
-  field $json_parser :param = JSON->new;
   field $title :param;
   field $output :param = '';
   field $calendars :param;
