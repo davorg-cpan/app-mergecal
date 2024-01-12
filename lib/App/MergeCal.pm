@@ -13,28 +13,36 @@ class App::MergeCal {
   field $title :param;
   field $output :param = '';
   field $calendars :param;
+  field $objects;
 
   method calendars { return $calendars }
   method title     { return $title }
   method output    { return $title }
 
   method run {
-    my $combined = {
-      type => 'VCALENDAR',
-      properties => {
-        'X-WR-CALNAME' => [ { value => $title } ],
-      },
-      objects => [],
-    };
+    $self->gather;
+    $self->render;
+  }
 
+  method gather {
     for (@$calendars) {
       my $ics = get($_) or die "Can't get $_";
       $ics = encode_utf8($ics);
       open my $fh, '<', \$ics or die $!;
       my $data = $vfile_parser->parse( $fh );
 
-      push @{ $combined->{objects} }, @{ $data->{objects}[0]{objects} };
+      push @$objects, @{ $data->{objects}[0]{objects} };
     }
+  }
+
+  method render {
+    my $combined = {
+      type => 'VCALENDAR',
+      properties => {
+        'X-WR-CALNAME' => [ { value => $title } ],
+      },
+      objects => $objects,
+    };
 
     my $out_fh;
     if ($output) {
