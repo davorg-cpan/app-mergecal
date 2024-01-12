@@ -56,15 +56,20 @@ class App::MergeCal {
 
   sub new_from_json {
     my $class = shift;
+    my ($json) = @_;
+
+    my $data = JSON->new->decode($json);
+
+    return $class->new(%$data);
+  }
+
+  sub new_from_json_file {
+    my $class = shift;
     my $conf_file = $_[0] // 'config.json';
 
     open my $conf_fh, '<', $conf_file or die "$conf_file: $!";
     my $json = do { local $/; <$conf_fh> };
-    my $config = JSON->new->decode($json);
 
-use Data::Printer;
-p $config;
-
-    return $class->new(%$config);
+    return $class->new_from_json($json);
   }
 }
