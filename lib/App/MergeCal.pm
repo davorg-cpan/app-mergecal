@@ -75,3 +75,5 @@ class App::MergeCal {
     return $class->new_from_json($json);
   }
 }
+
+1;
