@@ -17,14 +17,14 @@ WriteMakefile(
   EXE_FILES    => [ 'bin/mergecal' ],
 
   PREREQ_PM    => {
-    ($^V lt v5.38 ? (Object::Pad => 0) : ()),
-    Feature::Compat::Class => 0,
-    Text::vFile::asData => 0,
-    LWP::Simple            => 0,
-    JSON                   => 0,
+    ($^V lt v5.38 ? ('Object::Pad' => 0) : ()),
+    'Feature::Compat::Class' => 0,
+    'Text::vFile::asData'    => 0,
+    'LWP::Simple'            => 0,
+    'JSON'                   => 0,
   },
   TEST_REQUIRES => {
-    Test::More => 0,
+    'Test::More' => 0,
   },
 
   META_MERGE    => {
