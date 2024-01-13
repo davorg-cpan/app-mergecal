@@ -1,8 +1,11 @@
+use strict;
+use warnings;
+
 use ExtUtils::MakeMaker;
 
 my $mm_ver = $ExtUtils::MakeMaker::VERSION;
 if ($mm_ver =~ /_/) { # developer release/version
-  $mm_ver = eval $mm_ver;
+  $mm_ver = eval { $mm_ver };
   die $@ if $@;
 }
 
