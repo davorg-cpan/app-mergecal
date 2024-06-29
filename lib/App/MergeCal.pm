@@ -20,6 +20,8 @@ Command line program that merges iCal files into a single calendar.
 use 5.24.0;
 use Feature::Compat::Class;
 
+package App::MergeCal; # For PAUSE
+
 class App::MergeCal {
 
   our $VERSION = '0.0.1';
