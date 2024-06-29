@@ -32,11 +32,11 @@ WriteMakefile(
     resources => {
       repository => {
         type => 'git',
-        url  => 'https://github.com/davorg/app-mergecal.git',
-        web  => 'https://github.com/davorg/app-mergecal',
+        url  => 'https://github.com/davorg-cpan/app-mergecal.git',
+        web  => 'https://github.com/davorg-cpan/app-mergecal',
       },
       bugtracker => {
-        web  => 'https://github.com/davorg/app-mergecal/issues',
+        web  => 'https://github.com/davorg-cpan/app-mergecal/issues',
       },
     },
   },
